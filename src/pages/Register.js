@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useForm } from '../hooks/useForm';
 import validator from 'validator';
 import { startRegisterWithEmailPasswordName } from '../actions/auth/auth';
+import { Layaout } from '../components/layaout/Layaout';
 
 
 export const Register = () => {
@@ -46,7 +47,7 @@ export const Register = () => {
     }
 
     return (
-        <>
+        <Layaout>
             <h3 className="auth__title">Register</h3>
             {
                 error && (
@@ -109,6 +110,6 @@ export const Register = () => {
                 </Link>
 
             </form>
-        </>
+        </Layaout>
     )
 }

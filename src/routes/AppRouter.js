@@ -12,7 +12,7 @@ import { Home } from '../pages/Home';
 import { Login } from '../pages/Login';
 import { Register } from '../pages/Register';
 import './style.css'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { login, startLogOut } from '../actions/auth/auth';
 import { PublicRoute } from './PublicRouter';
 import { PrivateRoute } from './PrivateRouter';
@@ -21,10 +21,7 @@ import { Dashboard } from '../pages/Dashboard';
 export const AppRouter = () => {
     const dispatch = useDispatch()
     const [admin, setAdmin] = useState(false)
-   const {photo} = useSelector(state => state.auth)
-    const handleLogout = () => {
-        dispatch(startLogOut())
-    }
+  
 
     useEffect(() => {
         const auth = getAuth();
@@ -43,17 +40,7 @@ export const AppRouter = () => {
     //falta hacer rutas privadas 258
     return (
         <BrowserRouter>
-            <nav>
-                <ul>
-                    <li><button onClick={handleLogout}>logout</button></li>
-                    <li><NavLink to="/" className={({ isActive }) => isActive ? 'red' : ''}>Home</NavLink></li>
-                    <li><NavLink to="/about" className={({ isActive }) => isActive ? 'red' : ''}>About</NavLink></li>
-                    <li><NavLink to="/register" className={({ isActive }) => isActive ? 'red' : ''}>Register</NavLink></li>
-                    <li><NavLink to="/login" className={({ isActive }) => isActive ? 'red' : ''}>Login</NavLink></li>
-                    <li><NavLink to="/dashboard" className={({ isActive }) => isActive ? 'red' : ''}>Dashboard</NavLink></li>
-                    <img src={photo} alt="" />
-                </ul>
-            </nav>
+           
             <Routes>
                 <Route path="/" element={
                     <PublicRoute>

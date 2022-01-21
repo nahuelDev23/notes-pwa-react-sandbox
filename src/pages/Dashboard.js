@@ -1,9 +1,10 @@
 import React from 'react'
+import { Layaout } from '../components/layaout/Layaout'
 
 export const Dashboard = () => {
     return (
-        <div>
+        <Layaout>
             <h1>Panel admin</h1>
-        </div>
+        </Layaout>
     )
 }
