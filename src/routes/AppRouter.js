@@ -54,7 +54,7 @@ export const AppRouter = () => {
                 }></Route>
                 <Route path="/dashboard" element={
                     <PrivateRoute isAdmin={admin}>
-                        <Dashboard />
+                        <Dashboard  />
                     </PrivateRoute>
                 }></Route>
                 <Route path="/register" element={
