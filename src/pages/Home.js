@@ -1,34 +1,28 @@
-import React, { useEffect, useState } from 'react'
-import { db, collection, getDocs } from '../firebase/firebaseConfig'
+import React, { useEffect } from 'react'
+import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { startGoogleLogin } from '../actions/auth/auth'
+import { startSetAllReviews } from '../actions/review/review'
 
 export const Home = () => {
-    const [notesList, setNotesList] = useState([])
-    const docs = async () => {
-        const notesCol = collection(db, 'cities');
-        const notesSnapshot = await getDocs(notesCol);
-        const notesList = []
-         notesSnapshot.docs.map(doc =>
-        (
-            notesList.push({
-                id: doc.id,
-                ...doc.data()
-            })
-            )
+    const dispatch = useDispatch()
+    const { reviews } = useSelector(state => state.review)
 
-        );
-        console.log(notesList);
-        setNotesList(notesList)
+    const handleLoginGoogle = () => {
+        dispatch(startGoogleLogin())
     }
     useEffect(() => {
-        docs()
-    }, [])
+        dispatch(startSetAllReviews())
+    }, [dispatch])
 
     return (
         <div>
             <h1>Home</h1>
-            {notesList.map(note =>
-                (<p key={note.id}>{note.id},{note.title}</p>)
+            {reviews.map(review =>
+                (<p key={review.id}>{review.id},{review.title}</p>)
             )}
+
+            <button onClick={handleLoginGoogle}>Google login</button>
         </div>
     )
 }

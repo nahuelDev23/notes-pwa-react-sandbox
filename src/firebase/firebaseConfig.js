@@ -2,9 +2,16 @@
 import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
-// https://firebase.google.com/docs/web/setup#available-libraries
+import {
+  onAuthStateChanged,
+  updateProfile,
+  getAuth,
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+  createUserWithEmailAndPassword
+} from 'firebase/auth'
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyDQz4Tpoc33gnfeXFYvWrFu7-T6IRhwBDk",
   authDomain: "notas-react-f1c65.firebaseapp.com",
@@ -17,11 +24,18 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-
+const googleAuthProvider = new GoogleAuthProvider()
 
 export {
-    app,
-    db,
-    collection,
-    getDocs
+  app,
+  db,
+  collection,
+  getDocs,
+  googleAuthProvider,
+  signInWithPopup,
+  getAuth,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  updateProfile,
+  onAuthStateChanged
 }
