@@ -15,7 +15,7 @@ import {
 
 const firebaseConfig = {
   apiKey: "AIzaSyDQz4Tpoc33gnfeXFYvWrFu7-T6IRhwBDk",
-  authDomain: "notas-react-f1c65.firebaseapp.com",
+  authDomain: "notes-pwa.vercel.app",
   projectId: "notas-react-f1c65",
   storageBucket: "notas-react-f1c65.appspot.com",
   messagingSenderId: "262052559434",
