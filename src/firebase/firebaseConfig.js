@@ -3,6 +3,7 @@ import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
 import {
+  signOut,
   onAuthStateChanged,
   updateProfile,
   getAuth,
@@ -37,5 +38,6 @@ export {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   updateProfile,
-  onAuthStateChanged
+  onAuthStateChanged,
+  signOut
 }
