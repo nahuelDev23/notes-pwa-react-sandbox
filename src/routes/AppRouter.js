@@ -12,7 +12,7 @@ import { Home } from '../pages/Home';
 import { Login } from '../pages/Login';
 import { Register } from '../pages/Register';
 import './style.css'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { login, startLogOut } from '../actions/auth/auth';
 import { PublicRoute } from './PublicRouter';
 import { PrivateRoute } from './PrivateRouter';
@@ -20,10 +20,11 @@ import { Dashboard } from '../pages/Dashboard';
 
 export const AppRouter = () => {
     const dispatch = useDispatch()
-    const [admin,setAdmin] = useState(false)
-    const handleLogout = () =>{
+    const [admin, setAdmin] = useState(false)
+   const {photo} = useSelector(state => state.auth)
+    const handleLogout = () => {
         dispatch(startLogOut())
-    } 
+    }
 
     useEffect(() => {
         const auth = getAuth();
@@ -39,7 +40,7 @@ export const AppRouter = () => {
         });
 
     }, [dispatch])
-//falta hacer rutas privadas 258
+    //falta hacer rutas privadas 258
     return (
         <BrowserRouter>
             <nav>
@@ -50,27 +51,36 @@ export const AppRouter = () => {
                     <li><NavLink to="/register" className={({ isActive }) => isActive ? 'red' : ''}>Register</NavLink></li>
                     <li><NavLink to="/login" className={({ isActive }) => isActive ? 'red' : ''}>Login</NavLink></li>
                     <li><NavLink to="/dashboard" className={({ isActive }) => isActive ? 'red' : ''}>Dashboard</NavLink></li>
+                    <img src={photo} alt="" />
                 </ul>
             </nav>
             <Routes>
-            <Route path="/" element={
-                <PublicRoute>
-                    <Home />
-                </PublicRoute>
-            }></Route>
-             <Route path="/login" element={
-                <PublicRoute>
-                    <Login />
-                </PublicRoute>
-            }></Route>
-            <Route path="/dashboard" element={
-                <PrivateRoute isAdmin={admin}>
-                    <Dashboard />
-                </PrivateRoute>
-            }></Route>
-               {/* <Route path="/about" element={<About />}></Route>
-                <Route path="/register" element={<Register />}></Route>
-                <Route path="/login" element={<Login />}></Route> */}
+                <Route path="/" element={
+                    <PublicRoute>
+                        <Home />
+                    </PublicRoute>
+                }></Route>
+                <Route path="/login" element={
+                    <PublicRoute>
+                        <Login />
+                    </PublicRoute>
+                }></Route>
+                <Route path="/dashboard" element={
+                    <PrivateRoute isAdmin={admin}>
+                        <Dashboard />
+                    </PrivateRoute>
+                }></Route>
+                <Route path="/register" element={
+                    <PublicRoute >
+                        <Register />
+                    </PublicRoute>
+                }></Route>
+                <Route path="/about" element={
+                    <PublicRoute >
+                        <About />
+                    </PublicRoute>
+                }></Route>
+                
             </Routes>
         </BrowserRouter>
     )
