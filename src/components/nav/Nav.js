@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { startLogOut } from '../../actions/auth/auth'
 
-export const Nav = ({isAdmin}) => {
-    const { photo,uid,email } = useSelector(state => state.auth)
+export const Nav = () => {
+    const { photo, uid, email } = useSelector(state => state.auth)
     const [admin, setAdmin] = useState(false)
     const dispatch = useDispatch()
 
@@ -20,11 +20,11 @@ export const Nav = ({isAdmin}) => {
     return (
         <Box as='nav' display='flex' alignItems='center' justifyContent='space-between' p='4'>
             <List display='flex' textDecor='none'>
-                <ListItem mr='4'><NavLink to="/" className={({ isActive }) => isActive ? 'red' : ''}>Home</NavLink></ListItem>
-                <ListItem mr='4'><NavLink to="/about" className={({ isActive }) => isActive ? 'red' : ''}>About</NavLink></ListItem>
-                <ListItem mr='4'><NavLink to="/register" className={({ isActive }) => isActive ? 'red' : ''}>Register</NavLink></ListItem>
-                {!uid && <ListItem mr='4'><NavLink to="/login" className={({ isActive }) => isActive ? 'red' : ''}>Login</NavLink></ListItem>}
-                {admin && <ListItem mr='4'><NavLink to="/dashboard" className={({ isActive }) => isActive ? 'red' : ''}>Dashboard</NavLink></ListItem> }
+                <ListItem mr='4'><NavLink to="/"  className={({ isActive }) => isActive ? 'active' : ''}>Home</NavLink></ListItem>
+                <ListItem mr='4'><NavLink to="/about" className={({ isActive }) => isActive ? 'active' : ''}>About</NavLink></ListItem>
+                <ListItem mr='4'><NavLink to="/register" className={({ isActive }) => isActive ? 'active' : ''}>Register</NavLink></ListItem>
+                {!uid && <ListItem mr='4'><NavLink to="/login" className={({ isActive }) => isActive ? 'active' : ''}>Login</NavLink></ListItem>}
+                {admin && <ListItem mr='4'><NavLink to="/dashboard" className={({ isActive }) => isActive ? 'active' : ''}>Dashboard</NavLink></ListItem>}
                 <ListItem ><button onClick={handleLogout}>logout</button></ListItem>
 
             </List>
