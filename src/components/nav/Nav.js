@@ -13,6 +13,7 @@ export const Nav = () => {
     const handleLogout = () => {
         dispatch(startLogOut())
     }
+    
     useEffect(() => {
         email === 'tester@gmail.com' && setAdmin(true)
     }, [email])
@@ -20,11 +21,11 @@ export const Nav = () => {
     return (
         <Box as='nav' display='flex' alignItems='center' justifyContent='space-between' p='4'>
             <List display='flex' textDecor='none'>
-                <ListItem mr='4'><NavLink to="/"  className={({ isActive }) => isActive ? 'active' : ''}>Home</NavLink></ListItem>
-                <ListItem mr='4'><NavLink to="/about" className={({ isActive }) => isActive ? 'active' : ''}>About</NavLink></ListItem>
-                <ListItem mr='4'><NavLink to="/register" className={({ isActive }) => isActive ? 'active' : ''}>Register</NavLink></ListItem>
-                {!uid && <ListItem mr='4'><NavLink to="/login" className={({ isActive }) => isActive ? 'active' : ''}>Login</NavLink></ListItem>}
-                {admin && <ListItem mr='4'><NavLink to="/dashboard" className={({ isActive }) => isActive ? 'active' : ''}>Dashboard</NavLink></ListItem>}
+                <ListItem mr='4'><NavLink  to="/"  className={`{ ({ isActive }) => isActive ? 'active' : ''  } p-button`}  >Home</NavLink></ListItem>
+                <ListItem mr='4'><NavLink  to="/about" className={`{ ({ isActive }) => isActive ? 'active' : ''  } p-button`}>About</NavLink></ListItem>
+                <ListItem mr='4'><NavLink  to="/register" className={`{ ({ isActive }) => isActive ? 'active' : ''  } p-button`}>Register</NavLink></ListItem>
+                {!uid && <ListItem mr='4'><NavLink  to="/login" className={`{ ({ isActive }) => isActive ? 'active' : ''  } p-button`}>Login</NavLink></ListItem>}
+                {admin && <ListItem mr='4'><NavLink  to="/dashboard" className={`{ ({ isActive }) => isActive ? 'active' : ''  } p-button`}>Dashboard</NavLink></ListItem>}
                 <ListItem ><button onClick={handleLogout}>logout</button></ListItem>
 
             </List>

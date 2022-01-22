@@ -13,7 +13,7 @@ import { Login } from '../pages/Login';
 import { Register } from '../pages/Register';
 import './style.css'
 import { useDispatch } from 'react-redux';
-import { login, startLogOut } from '../actions/auth/auth';
+import { login } from '../actions/auth/auth';
 import { PublicRoute } from './PublicRouter';
 import { PrivateRoute } from './PrivateRouter';
 import { Dashboard } from '../pages/Dashboard';
@@ -21,7 +21,7 @@ import { Dashboard } from '../pages/Dashboard';
 export const AppRouter = () => {
     const dispatch = useDispatch()
     const [admin, setAdmin] = useState(false)
-  
+    const [checking, setChecking] = useState(true)
 
     useEffect(() => {
         const auth = getAuth();
@@ -29,15 +29,21 @@ export const AppRouter = () => {
             if (user?.uid) {
                 dispatch(login(user.uid, user.displayName, user.email, user.photoURL))
                 user.email === 'tester@gmail.com' && setAdmin(true)
-                // console.log(admin);
-                // console.log(user.email);
             } else {
                 setAdmin(false)
             }
+            setChecking(false)
         });
 
     }, [dispatch])
-    //falta hacer rutas privadas 258
+
+
+    if( checking ) {
+        return (
+            <h1>AGUANTAAA</h1>
+        )
+    }
+
     return (
         <BrowserRouter>
            

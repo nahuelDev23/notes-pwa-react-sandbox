@@ -1,3 +1,4 @@
+import { Box } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom'
@@ -27,10 +28,10 @@ export const Login = () => {
 
     return (
         <Layaout>
-            <div className="auth__box-container">
+            <Box className="auth__box-container " > 
                 <h3 className="auth__title">Login</h3>
 
-                <form onSubmit={handleLogin}>
+                <Box as='form' onSubmit={handleLogin} textColor='black' >
 
                     <input
                         type="text"
@@ -64,7 +65,7 @@ export const Login = () => {
                     </button>
 
 
-                    <div className="auth__social-networks">
+                    <Box className="auth__social-networks" textColor='white'>
                         <p>Login with social networks</p>
 
                         <div
@@ -78,7 +79,7 @@ export const Login = () => {
                                 <b>Sign in with google</b>
                             </p>
                         </div>
-                    </div>
+                    </Box>
 
                     <Link
                         to="/auth/register"
@@ -87,8 +88,8 @@ export const Login = () => {
                         Create new account
                     </Link>
 
-                </form>
-            </div>
+                </Box>
+            </Box>
         </Layaout>
 
     )

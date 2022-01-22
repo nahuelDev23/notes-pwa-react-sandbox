@@ -5,7 +5,7 @@ import { Nav } from '../nav/Nav'
 
 export const Layaout = ({ children }) => {
     return (
-        <Box  bgColor='gray.200' >
+        <Box textColor='white'>
             <Nav />
             <Box as='main' minHeight='full' >
                 {children}
