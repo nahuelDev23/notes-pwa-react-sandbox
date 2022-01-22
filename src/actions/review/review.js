@@ -13,7 +13,6 @@ export const startSetAllReviews = () => {
                 ...doc.data()
             })
         )
-
         );
         dispatch(setAllReviews(reviewList))
 

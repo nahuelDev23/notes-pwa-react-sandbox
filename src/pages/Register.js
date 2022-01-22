@@ -5,6 +5,7 @@ import { useForm } from '../hooks/useForm';
 import validator from 'validator';
 import { startRegisterWithEmailPasswordName } from '../actions/auth/auth';
 import { Layaout } from '../components/layaout/Layaout';
+import { Box } from '@chakra-ui/react';
 
 
 export const Register = () => {
@@ -56,7 +57,7 @@ export const Register = () => {
                     </div>
                 )
             }
-            <form onSubmit={handleSubmitRegister}>
+            <Box as='form' onSubmit={handleSubmitRegister} textColor='black'>
 
                 <input
                     type="text"
@@ -109,7 +110,7 @@ export const Register = () => {
                     Already registered?
                 </Link>
 
-            </form>
+            </Box>
         </Layaout>
     )
 }

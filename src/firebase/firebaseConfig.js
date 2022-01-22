@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
-import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
+import { getFirestore, collection, getDocs,doc,addDoc ,setDoc,getDoc} from 'firebase/firestore/lite';
 import {
   signOut,
   onAuthStateChanged,
@@ -10,7 +10,8 @@ import {
   signInWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
-  createUserWithEmailAndPassword
+  createUserWithEmailAndPassword,
+  
 } from 'firebase/auth'
 
 const firebaseConfig = {
@@ -39,5 +40,9 @@ export {
   createUserWithEmailAndPassword,
   updateProfile,
   onAuthStateChanged,
-  signOut
+  signOut,
+  doc,
+  addDoc,
+  setDoc,
+  getDoc
 }

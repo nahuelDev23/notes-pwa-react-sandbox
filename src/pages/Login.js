@@ -10,15 +10,15 @@ export const Login = () => {
     const dispatch = useDispatch()
     const [loading, setLoading] = useState(false)
     const [formValues, handleInputChange] = useForm({
-        email: 'asdasd@gmail.com',
-        password: '123456'
+        email: 'admin@gmail.com',
+        password: '123123'
     })
     const { email, password } = formValues
 
     const handleLogin = async (e) => {
         e.preventDefault()
 
-        await dispatch(startLoginWithEmailPasswordName(email, password))
+        dispatch(startLoginWithEmailPasswordName(email, password))
 
     }
 
