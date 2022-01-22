@@ -44,5 +44,6 @@ export {
   doc,
   addDoc,
   setDoc,
-  getDoc
+  getDoc,
+  
 }

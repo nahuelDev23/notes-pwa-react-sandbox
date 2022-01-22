@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { startClearComments, startSetCommentReview } from '../../actions/comment/comment';
+
 import { CommentBox } from './CommentBox';
 
 export const CommentList = ({idReview}) => {
@@ -14,9 +15,13 @@ export const CommentList = ({idReview}) => {
         }
     },[dispatch,idReview])
 
-    if(!comments){
-        return 'cargando comentarios'
-    }
+    useEffect(()=>{
+        startSetCommentReview(idReview)
+    },[comments])
+
+    // if(!comments){
+    //     return 'cargando comentarios'
+    // }
     return (
         <div>
            {comments && comments.map(comment=>(
