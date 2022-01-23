@@ -13,14 +13,23 @@ export const ReviewBox = () => {
   const [reviews, setReview] = useState([])
 
   useEffect(() => {
+    let isApiSubscribed = true;
     onSnapshot(
       query(
         collection(db, 'reviews'),
         orderBy('date', 'desc')
       ),
-      (snapshot) => { setReview(snapshot.docs) }
-    )
+      (snapshot) => {
+        if (isApiSubscribed) {
+          setReview(snapshot.docs)
+        }
 
+      }
+    )
+    return () => {
+      // cancel the subscription
+      isApiSubscribed = false;
+    };
   }, [])
 
 

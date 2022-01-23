@@ -1,6 +1,6 @@
 import { AlertDialog, AlertDialogBody, AlertDialogContent, AlertDialogFooter, AlertDialogHeader, AlertDialogOverlay, Button, Td, Tr, useDisclosure } from '@chakra-ui/react';
 import { deleteDoc, doc, getDoc } from 'firebase/firestore';
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import { db } from '../../firebase/firebaseConfig';
 import { Form } from './review/Form';
 
@@ -18,7 +18,6 @@ export const TrList = ({ review }) => {
             const docRef = doc(db, 'reviews', id)
             const docSnap = await getDoc(docRef);
             docSnap.data() !== null && setCurrentReview(docSnap.data())
-            currentReview && console.log(currentReview);
         }
     }
     const handleDelete = async (id) => {
