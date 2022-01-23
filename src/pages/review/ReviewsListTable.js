@@ -31,7 +31,7 @@ export const ReviewsListTable = () => {
             </Thead>
             <Tbody>
                 {reviews && reviews.map(review => (
-                    <TrList key={review.id} review={review} />
+                    <TrList  key={review.id} review={review} />
                 ))}
             </Tbody>
 

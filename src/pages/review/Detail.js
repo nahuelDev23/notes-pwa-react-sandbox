@@ -25,7 +25,7 @@ export const Detail = () => {
     }, [getData])
 
     if (!review) {
-        return <p>cargando</p>
+        return <p>cargando detail</p>
     }
 
     return (
