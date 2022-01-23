@@ -30,7 +30,7 @@ export const TrList = ({ review }) => {
                 <Td textAlign='center'>{title}</Td>
                 <Td textAlign='center'>{stars} / 5</Td>
                 <Td textAlign='center'>
-                    <Button onClick={() => {
+                    <Button bgColor='twitter.600' onClick={() => {
                         handleEdit(review.id);
                         onOpen();
                     }}>Editar</Button>
