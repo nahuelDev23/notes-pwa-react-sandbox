@@ -1,4 +1,4 @@
-import { Button, Flex, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper } from '@chakra-ui/react';
+import { Button, Flex, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay, NumberInput, NumberInputField } from '@chakra-ui/react';
 import { addDoc, collection, doc, updateDoc } from 'firebase/firestore'
 import { db } from '../../../firebase/firebaseConfig'
 import React from 'react';
@@ -34,10 +34,6 @@ export const Form = ({ isOpen, onClose, initData, currentReviewId = null, newRev
 
                         <NumberInput name='stars' value={stars} defaultValue={1} min={1} max={5}>
                             <NumberInputField onChange={handleInputChange} />
-                            {/* <NumberInputStepper>
-                                <NumberIncrementStepper />
-                                <NumberDecrementStepper />
-                            </NumberInputStepper> */}
                         </NumberInput>
 
                         <Button type='submit' bgColor='twitter.400' color='white' mt='4'>{newReview ? 'Guardar' : 'Editar'}</Button>
