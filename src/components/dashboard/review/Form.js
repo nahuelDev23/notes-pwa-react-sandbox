@@ -17,20 +17,24 @@ export const Form = ({ isOpen, onClose, initData, currentReviewId = null, newRev
             setHandleError('El titulo es necesario');
             return
         }
-        
-        if (newReview) {
-            const ref = collection(db, 'reviews')
-            await addDoc(ref, values);
-            reset()
-            onClose()
-            setHandleError(null)
-        } else {
-            const path = `reviews/${currentReviewId}`
-            const reviewRef = doc(db,path);
-            await updateDoc(reviewRef, values);
-            onClose()
-            setHandleError(null)
+        try {
+            if (newReview) {
+                const ref = collection(db, 'reviews')
+                await addDoc(ref, values);
+                reset()
+                onClose()
+                setHandleError(null)
+            } else {
+                const path = `reviews/${currentReviewId}`
+                const reviewRef = doc(db,path);
+                await updateDoc(reviewRef, values);
+                onClose()
+                setHandleError(null)
+            }
+        } catch (error) {
+            console.log(error);
         }
+       
     }
 
     useEffect(() => {
