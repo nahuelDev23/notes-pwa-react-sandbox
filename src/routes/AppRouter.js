@@ -34,7 +34,7 @@ export const AppRouter = () => {
 
                 const docuRef = doc(db, `users/${user.uid}`);
                 const req = await getDoc(docuRef);
-                const roles = req.data().roles; //es como req.json()
+                const roles = req.data().roles  //es como req.json()
 
                 dispatch(login(user.uid, user.displayName, user.email, user.photoURL,roles))
                 

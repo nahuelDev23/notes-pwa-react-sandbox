@@ -1,5 +1,5 @@
 import Swal from 'sweetalert2'
-import {getDoc, doc, collection,setDoc,db,addDoc,signOut, updateProfile, signInWithPopup, getAuth, googleAuthProvider, signInWithEmailAndPassword, createUserWithEmailAndPassword } from '../../firebase/firebaseConfig'
+import {getDoc, doc,setDoc,db,signOut, updateProfile, signInWithPopup, getAuth, googleAuthProvider, signInWithEmailAndPassword, createUserWithEmailAndPassword } from '../../firebase/firebaseConfig'
 import { types } from '../../types/types';
 
 
@@ -7,8 +7,15 @@ export const startGoogleLogin = () => {
     return async (dispatch) => {
         const auth = getAuth();
         signInWithPopup(auth, googleAuthProvider)
-            .then(({ user }) => {
-                dispatch(login(user.uid, user.displayName, user.email, user.photoURL))
+            .then(async({ user }) => {
+                const refDoc = await doc(db, `users/${user.uid}`);
+                await setDoc(refDoc,{email:user.email,roles:{admin:false,author:false,reader:true},displayName:user.displayName,photo:user.photoURL})
+
+                const docuRef = doc(db, `users/${user.uid}`);
+                const req = await getDoc(docuRef);
+                const roles = req.data().roles;
+                
+                dispatch(login(user.uid, user.displayName, user.email, user.photoURL,roles))
             })
             .catch(e => {
                 Swal.fire('Error!',e.message,'error')

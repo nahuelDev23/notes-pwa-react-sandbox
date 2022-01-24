@@ -19,12 +19,14 @@ export const Form = ({ isOpen, onClose, initData, currentReviewId = null, newRev
         }
         
         if (newReview) {
-            await addDoc(collection(db, 'reviews'), values);
+            const ref = collection(db, 'reviews')
+            await addDoc(ref, values);
             reset()
             onClose()
             setHandleError(null)
         } else {
-            const reviewRef = doc(db, `reviews/${currentReviewId}`);
+            const path = `reviews/${currentReviewId}`
+            const reviewRef = doc(db,path);
             await updateDoc(reviewRef, values);
             onClose()
             setHandleError(null)

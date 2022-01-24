@@ -1,5 +1,5 @@
 import { Box } from '@chakra-ui/react';
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom'
 import { startGoogleLogin, startLoginWithEmailPasswordName } from '../actions/auth/auth';
@@ -8,7 +8,6 @@ import { useForm } from '../hooks/useForm';
 
 export const Login = () => {
     const dispatch = useDispatch()
-    const [loading, setLoading] = useState(false)
     const [formValues, handleInputChange] = useForm({
         email: 'admin@gmail.com',
         password: '123123'
@@ -22,7 +21,8 @@ export const Login = () => {
 
     }
 
-    const handleGoogleLogin = () => {
+    const handleGoogleLogin = async() => {
+        
         dispatch(startGoogleLogin())
     }
 
@@ -55,12 +55,11 @@ export const Login = () => {
 
                     <button
                         type="submit"
-                        className={`${loading && "disabled"} btn btn-primary btn-block `}
-                        disabled={loading}
+                        className={` btn btn-primary btn-block `}
+                        
                     >
 
-                        {loading ? ('cargando') : ('Login')}
-
+                        'Login'
 
                     </button>
 
