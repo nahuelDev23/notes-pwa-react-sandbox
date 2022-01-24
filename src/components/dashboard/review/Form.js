@@ -1,38 +1,60 @@
 import { Button, Flex, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay, NumberInput, NumberInputField } from '@chakra-ui/react';
 import { addDoc, collection, doc, updateDoc } from 'firebase/firestore'
 import { db } from '../../../firebase/firebaseConfig'
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from '../../../hooks/useForm';
 
 export const Form = ({ isOpen, onClose, initData, currentReviewId = null, newReview = true, }) => {
 
-    const [values, handleInputChange, reset] = useForm(initData)
+    const [values, handleInputChange, reset, setValues] = useForm(initData)
 
     const { title, stars } = values
-
+    const [handleError, setHandleError] = useState(null)
     const handleSubmit = async (e) => {
         e.preventDefault()
+
+        if (title.trim().length === 0) {
+            setHandleError('El titulo es necesario');
+            return
+        }
+        
         if (newReview) {
             await addDoc(collection(db, 'reviews'), values);
             reset()
+            onClose()
+            setHandleError(null)
         } else {
             const reviewRef = doc(db, `reviews/${currentReviewId}`);
             await updateDoc(reviewRef, values);
+            onClose()
+            setHandleError(null)
         }
     }
 
+    useEffect(() => {
+        if (stars > 5) {
+            setValues({ ...values, stars: 5 })
+        } else if (stars < 0) {
+            setValues({ ...values, stars: 1 })
+        }
+
+    }, [stars, setValues, values])
+
     return (
-        <Modal isOpen={isOpen} onClose={onClose}>
+        <Modal isOpen={isOpen} onClose={() => {
+            onClose();
+            setHandleError(null)
+        }}>
             <ModalOverlay />
             <ModalContent>
                 <ModalHeader>{newReview ? 'Agregar Review' : 'Editar review'}</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody>
                     <Flex as='form' direction='column' onSubmit={handleSubmit}>
-
+                        {handleError && handleError}
                         <Input placeholder='title' name='title' value={title} onChange={handleInputChange} mb='4' />
 
-                        <NumberInput name='stars' value={stars} defaultValue={1} min={1} max={5}>
+                        <NumberInput name='stars' value={stars} defaultValue={1} min={1} max={5} required>
                             <NumberInputField onChange={handleInputChange} />
                         </NumberInput>
 
