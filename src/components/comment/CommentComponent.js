@@ -19,10 +19,10 @@ export const CommentComponent = ({ idReview }) => {
         ),
         (snapshot) => { setComments(snapshot.docs) }
       ),
-    [idReview]
+    []
   );
 
-
+  console.log('HOC');
   return (
     <div>
       {uid ? <CommentForm idReview={idReview} /> : <Text textAlign='center' mt='4'>Tenes que estar registrado para comentar</Text>}

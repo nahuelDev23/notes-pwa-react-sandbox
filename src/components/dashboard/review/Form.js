@@ -10,6 +10,7 @@ export const Form = ({ isOpen, onClose, initData, currentReviewId = null, newRev
 
     const { title, stars } = values
     const [handleError, setHandleError] = useState(null)
+
     const handleSubmit = async (e) => {
         e.preventDefault()
 
@@ -46,6 +47,7 @@ export const Form = ({ isOpen, onClose, initData, currentReviewId = null, newRev
 
     }, [stars, setValues, values])
 
+   
     return (
         <Modal isOpen={isOpen} onClose={() => {
             onClose();
@@ -58,7 +60,7 @@ export const Form = ({ isOpen, onClose, initData, currentReviewId = null, newRev
                 <ModalBody>
                     <Flex as='form' direction='column' onSubmit={handleSubmit}>
                         {handleError && handleError}
-                        <Input placeholder='title' name='title' value={title} onChange={handleInputChange} mb='4' />
+                        <Input  placeholder='title' name='title' value={title} onChange={handleInputChange} mb='4' />
 
                         <NumberInput name='stars' value={stars} defaultValue={1} min={1} max={5} required>
                             <NumberInputField onChange={handleInputChange} />

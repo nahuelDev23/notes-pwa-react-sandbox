@@ -7,8 +7,9 @@ import { db } from '../../firebase/firebaseConfig';
 export const CommentForm = ({ idReview }) => {
     const { uid, photo, name } = useSelector(state => state.auth)
     const [comment, setComment] = useState('')
-
+    console.log('commentForm');
     const handleSubmit = async (e) => {
+       
         e.preventDefault()
         const commentToSend = comment
         setComment('')
