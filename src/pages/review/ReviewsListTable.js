@@ -46,13 +46,21 @@ export const ReviewsListTable = () => {
     }
 
     useEffect(() => {
-        onSnapshot(
-            query(
-                collection(db, 'reviews'),
-                orderBy('date')
-            ),
-            (snapshot) => { setReview(snapshot.docs) }
-        )
+        let isApiSubscribed = true
+        if (isApiSubscribed) {
+            onSnapshot(
+                query(
+                    collection(db, 'reviews'),
+                    orderBy('date')
+                ),
+                (snapshot) => { setReview(snapshot.docs) }
+            )
+        }
+
+        return () => {
+            // cancel the subscription
+            isApiSubscribed = false;
+        };
     }, [dispatch])
 
     return (
