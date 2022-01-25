@@ -6,7 +6,6 @@ import Moment from 'react-moment';
 
 export const CommentBox = ({ comment }) => {
   const { name, date, comment: theComment, photo } = comment.data()
-  console.log('commentBox');
   return (
     <Box display='flex' bgColor='twitter.800' mt='4' p='4' rounded='4'>
       <Box overflow='hidden' mr='4'>

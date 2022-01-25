@@ -3,7 +3,6 @@ import React from 'react';
 import { CommentBox } from './CommentBox';
 
 export const CommentList = ({comment}) => {
-   console.log('commentList');
     return (
         <div>
            {comment && comment.map(comment=>(

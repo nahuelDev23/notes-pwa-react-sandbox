@@ -11,6 +11,7 @@ export const CommentComponent = ({ idReview }) => {
   const { uid } = useSelector(state => state.auth)
   useEffect(
     () =>
+    
       onSnapshot(
         query(
           collection(db, 'reviews', idReview, 'comments'),
@@ -22,7 +23,7 @@ export const CommentComponent = ({ idReview }) => {
     []
   );
 
-  console.log('HOC');
+  
   return (
     <div>
       {uid ? <CommentForm idReview={idReview} /> : <Text textAlign='center' mt='4'>Tenes que estar registrado para comentar</Text>}

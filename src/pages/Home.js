@@ -5,7 +5,6 @@ export const Home = () => {
    
     return (
         <Layaout>
-            <h1>Home</h1>
             <ReviewBox/>
         </Layaout>
     )
