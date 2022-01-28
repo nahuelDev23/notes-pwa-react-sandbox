@@ -3,7 +3,7 @@
 Al guardar el valor del nuevo comment en el state de redux la propiedad
 date daba error al ser leida por moment.Decia que date no es una funcion.
 
-Esto es porque al guardarse los datos en redux no se serialzia y hace que pierda la propiedad de funcion, en consecuencia al ser leido ya no es una funcion.
+Esto es porque al guardarse los datos en redux no se serialzia y hace que pierda la propiedad de function, en consecuencia al ser leido ya no es una funcion.
 
 
 -------------------------

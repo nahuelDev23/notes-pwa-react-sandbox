@@ -1,6 +1,6 @@
+import React from 'react'
 import { Button, useDisclosure } from '@chakra-ui/react'
 import { serverTimestamp } from 'firebase/firestore'
-import React from 'react'
 import { useSelector } from 'react-redux'
 import { Form } from '../components/dashboard/review/Form'
 import { Layaout } from '../components/layaout/Layaout'
@@ -20,10 +20,13 @@ export const Dashboard = () => {
 
     return (
         <Layaout>
-            <Button onClick={onOpen} bgColor='twitter.400'>Agregar review</Button>
-            <ReviewsListTable/>
+            <Button onClick={onOpen} bgColor='twitter.400' _hover={{
+                background: "blue.400",
+                color: "none",
+            }}>Agregar review</Button>
+            <ReviewsListTable />
 
-            <Form isOpen={isOpen} onClose={onClose} initData={initData}/>
+            <Form isOpen={isOpen} onClose={onClose} initData={initData} />
 
         </Layaout>
     )

@@ -65,11 +65,15 @@ export const Detail = () => {
                 <Flex alignItems='center' mt='4'>
 
                     {
-                        !hasLiked
+                        uid
                             ?
-                            <Flex  onClick={handleLike} ><FavoriteBorderIcon sx={{color:'red'}}/></Flex>
-                            :
-                            <Flex  onClick={handleLike}><FavoriteIcon sx={{color:'red'}}/></Flex>
+                            !hasLiked
+                                ?
+                                <Flex onClick={handleLike} ><FavoriteBorderIcon sx={{ color: 'red' }} /></Flex>
+                                :
+                                <Flex onClick={handleLike}><FavoriteIcon sx={{ color: 'red' }} /></Flex>
+
+                            : <Flex><FavoriteIcon sx={{ color: 'red' }} /></Flex>
                     }
                     {
                         likes.length > 0 && <Text ml='4'> {likes.length} me gusta</Text>

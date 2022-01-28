@@ -1,9 +1,7 @@
-import { Box, Grid } from '@chakra-ui/react';
+import { Grid } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 
-import {
-  Link,
-} from "react-router-dom";
+
 import { collection, onSnapshot, orderBy, query } from 'firebase/firestore';
 import { db } from '../../firebase/firebaseConfig';
 import { ReviewBoxItem } from './ReviewBoxItem';
@@ -35,7 +33,7 @@ export const ReviewBox = () => {
 
 
   return (
-    <Grid templateColumns='repeat(4, 1fr)' gap={6}>
+    <Grid maxW='full'  templateColumns={{base:'repeat(1, 1fr)',sm:'repeat(2, 1fr)',md:'repeat(3, 1fr)'}} gap={6}>
       {reviews && reviews.map(review => (
         <ReviewBoxItem key={review.id} review={review} />
       ))}

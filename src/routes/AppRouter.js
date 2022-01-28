@@ -8,7 +8,7 @@ import {
     BrowserRouter,
 } from "react-router-dom";
 
-import { About } from '../pages/About';
+
 import { Home } from '../pages/Home';
 import { Login } from '../pages/Login';
 import { Detail } from '../pages/review/Detail';
@@ -75,11 +75,7 @@ export const AppRouter = () => {
                         <Register />
                     </PublicRoute>
                 }></Route>
-                <Route path="/about" element={
-                    <PublicRoute >
-                        <About />
-                    </PublicRoute>
-                }></Route>
+               
                 <Route path="/review/:id" element={
                     <PublicRoute >
                         <Detail />

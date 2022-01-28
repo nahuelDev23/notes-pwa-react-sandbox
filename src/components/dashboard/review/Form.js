@@ -1,4 +1,4 @@
-import { Button, Flex, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay, NumberInput, NumberInputField } from '@chakra-ui/react';
+import { Button, Flex, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay, NumberInput, NumberInputField, Text } from '@chakra-ui/react';
 import { addDoc, collection, doc, updateDoc } from 'firebase/firestore'
 import { db } from '../../../firebase/firebaseConfig'
 import React, { useEffect, useState } from 'react';
@@ -18,6 +18,7 @@ export const Form = ({ isOpen, onClose, initData, currentReviewId = null, newRev
             setHandleError('El titulo es necesario');
             return
         }
+
         try {
             if (newReview) {
                 const ref = collection(db, 'reviews')
@@ -27,7 +28,7 @@ export const Form = ({ isOpen, onClose, initData, currentReviewId = null, newRev
                 setHandleError(null)
             } else {
                 const path = `reviews/${currentReviewId}`
-                const reviewRef = doc(db,path);
+                const reviewRef = doc(db, path);
                 await updateDoc(reviewRef, values);
                 onClose()
                 setHandleError(null)
@@ -35,7 +36,7 @@ export const Form = ({ isOpen, onClose, initData, currentReviewId = null, newRev
         } catch (error) {
             console.log(error);
         }
-       
+
     }
 
     useEffect(() => {
@@ -47,7 +48,7 @@ export const Form = ({ isOpen, onClose, initData, currentReviewId = null, newRev
 
     }, [stars, setValues, values])
 
-   
+
     return (
         <Modal isOpen={isOpen} onClose={() => {
             onClose();
@@ -59,14 +60,18 @@ export const Form = ({ isOpen, onClose, initData, currentReviewId = null, newRev
                 <ModalCloseButton />
                 <ModalBody>
                     <Flex as='form' direction='column' onSubmit={handleSubmit}>
-                        {handleError && handleError}
-                        <Input  placeholder='title' name='title' value={title} onChange={handleInputChange} mb='4' />
+                        {handleError && <Text bgColor='red.100' p='2' borderRadius='sm' mb='4' fontWeight='bold'>{handleError}</Text>}
+                        <Input placeholder='Titulo' name='title' value={title} onChange={handleInputChange} mb='4' />
 
-                        <NumberInput name='stars' value={stars} defaultValue={1} min={1} max={5} required>
-                            <NumberInputField onChange={handleInputChange} />
+                        <NumberInput name='stars' value={stars} defaultValue={1} min={0} max={5} required>
+                            <NumberInputField onChange={handleInputChange} placeholder='Calificacion' />
                         </NumberInput>
 
-                        <Button type='submit' bgColor='twitter.400' color='white' mt='4'>{newReview ? 'Guardar' : 'Editar'}</Button>
+                        <Button type='submit' _hover={{
+                            background: "blue.400",
+                            color: "none",
+                        }}
+                            bgColor='twitter.400' color='white' mt='4'>{newReview ? 'Guardar' : 'Editar'}</Button>
 
                     </Flex>
                 </ModalBody>
