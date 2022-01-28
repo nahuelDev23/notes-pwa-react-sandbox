@@ -19,8 +19,6 @@ plataforma.
 
 # Aclaraciones
 
-No se hizo responsive porque el objetivo era hacer uso de las tecnologias anteriormente mencionadas.
-
 No se presto atencion al dise'o.
 
 Podes ingresar como administrador.

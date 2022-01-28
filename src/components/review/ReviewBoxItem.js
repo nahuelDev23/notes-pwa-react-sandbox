@@ -34,8 +34,8 @@ export const ReviewBoxItem = ({ review }) => {
             <Flex flexDirection='column'  justifyContent='space-between' minH='full' maxW='full' key={review.id} bgColor='whiteAlpha.500' p='4'  borderRadius='4'>
                 <Box minH='16'>{review.data().title}</Box>
                 <Grid gap='1' templateColumns='repeat(2, 1fr)'  >
-                    <Flex fontSize='sm' rounded='sm' p='2' w='full' bgColor='red.300' alignItems='center' mt='4' >{likes.length > 0 ? <Box mr='2'>{likes.length}</Box> : <Box mr='2'>0</Box>} <FavoriteIcon sx={{fontSize:'16px'}}/></Flex>
-                    <Flex fontSize='sm' rounded='sm' p='2' w='full' bgColor='red.300' alignItems='center' mt='4' >{comments.length > 0 ? <Box mr='2'>{comments.length}</Box> : <Box mr='2'>0</Box>} <ChatBubbleIcon sx={{fontSize:'16px'}}/></Flex>
+                    <Flex fontSize='sm' rounded='sm' p='2' w='full' bgColor='twitter.800' alignItems='center' mt='4' >{likes.length > 0 ? <Box mr='2'>{likes.length}</Box> : <Box mr='2'>0</Box>} <FavoriteIcon sx={{fontSize:'16px'}}/></Flex>
+                    <Flex fontSize='sm' rounded='sm' p='2' w='full' bgColor='twitter.800' alignItems='center' mt='4' >{comments.length > 0 ? <Box mr='2'>{comments.length}</Box> : <Box mr='2'>0</Box>} <ChatBubbleIcon sx={{fontSize:'16px'}}/></Flex>
                 </Grid>
 
             </Flex>

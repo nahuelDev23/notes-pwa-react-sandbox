@@ -1,4 +1,4 @@
-import { Box } from '@chakra-ui/react';
+import { Box, Button, Flex, Heading, Image, Input, Text } from '@chakra-ui/react';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom'
@@ -21,19 +21,19 @@ export const Login = () => {
 
     }
 
-    const handleGoogleLogin = async() => {
-        
+    const handleGoogleLogin = async () => {
+
         dispatch(startGoogleLogin())
     }
 
     return (
         <Layaout>
-            <Box className="auth__box-container " > 
-                <h3 className="auth__title">Login</h3>
+            <Box className="auth__box-container " >
+                <Heading mb='4' textAlign='center'>Login</Heading>
 
                 <Box as='form' onSubmit={handleLogin} textColor='black' >
 
-                    <input
+                    <Input
                         type="text"
                         placeholder="Email"
                         name="email"
@@ -41,51 +41,68 @@ export const Login = () => {
                         autoComplete="off"
                         value={email}
                         onChange={handleInputChange}
+                        bgColor='white'
+                        mb='4'
                     />
 
-                    <input
+                    <Input
                         type="password"
                         placeholder="Password"
                         name="password"
                         className="auth__input"
                         value={password}
                         onChange={handleInputChange}
+                        bgColor='white'
+                        mb='4'
                     />
 
 
-                    <button
+                    <Button
                         type="submit"
-                        className={` btn btn-primary btn-block `}
-                        
+                        bgColor='twitter.300'
+                        mb='8'
+                        w='full'
                     >
 
-                        'Login'
+                        Login
 
-                    </button>
+                    </Button>
 
 
-                    <Box className="auth__social-networks" textColor='white'>
-                        <p>Login with social networks</p>
+                    <Flex flexDirection='column' >
 
-                        <div
+                        <Flex
                             className="google-btn"
                             onClick={handleGoogleLogin}
+                            bgColor='white'
+                            p='4'
+                            mb='4'
+                            borderRadius='4'
+                            justifyContent='center'
                         >
-                            <div className="google-icon-wrapper">
-                                <img className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="google button" />
-                            </div>
-                            <p className="btn-text">
-                                <b>Sign in with google</b>
-                            </p>
-                        </div>
+                            <Flex >
+                                <Image mr='4' className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="google button" />
+                            </Flex>
+                            <Box >
+                                <Text fontWeight='bold'>Sign in with google</Text>
+                            </Box>
+                        </Flex>
+                    </Flex>
+                    <Box
+                        bgColor='white'
+                        p='4'
+                        borderRadius='4'
+                        textAlign='center'
+                        fontWeight='bold'
+                        >
+                        <Link
+                            to="/register"
+                            className="link"
+                        >
+                            Crear una cuenta
+                        </Link>
                     </Box>
 
-                    <Link
-                        to="/auth/register"
-                        className="link"
-                    >
-                        Create new account
-                    </Link>
 
                 </Box>
             </Box>

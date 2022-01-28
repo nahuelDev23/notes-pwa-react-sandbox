@@ -5,7 +5,7 @@ import { useForm } from '../hooks/useForm';
 import validator from 'validator';
 import { startRegisterWithEmailPasswordName } from '../actions/auth/auth';
 import { Layaout } from '../components/layaout/Layaout';
-import { Box } from '@chakra-ui/react';
+import { Box, Button, Flex, Heading, Input, Text } from '@chakra-ui/react';
 
 
 export const Register = () => {
@@ -49,7 +49,7 @@ export const Register = () => {
 
     return (
         <Layaout>
-            <h3 className="auth__title">Register</h3>
+            <Heading textAlign='center' mb='4'>Register</Heading>
             {
                 error && (
                     <div className="caja_error">
@@ -59,56 +59,71 @@ export const Register = () => {
             }
             <Box as='form' onSubmit={handleSubmitRegister} textColor='black'>
 
-                <input
+                <Input
                     type="text"
                     placeholder="Name"
                     name="name"
                     className="auth__input"
                     autoComplete="off"
+                    mb='4'
+                    bgColor='white'
+                    color='black'
                     onChange={handleInputChange}
                 />
 
-                <input
+                <Input
                     type="text"
                     placeholder="Email"
                     name="email"
                     className="auth__input"
                     autoComplete="off"
+                    mb='4'
+                    bgColor='white'
+                    color='black'
                     onChange={handleInputChange}
                 />
 
-                <input
+                <Input
                     type="password"
                     placeholder="Password"
                     name="password"
                     className="auth__input"
+                    mb='4'
+                    bgColor='white'
+                    color='black'
                     onChange={handleInputChange}
                 />
 
-                <input
+                <Input
                     type="password"
                     placeholder="Confirm password"
                     name="password2"
                     className="auth__input"
+                    mb='4'
+                    bgColor='white'
+                    color='black'
                     onChange={handleInputChange}
                 />
 
+                <Flex alignItems='center' justifyContent='center'>
+                    <Button
+                        type="submit"
+                        className="btn btn-primary btn-block mb-5"
+                        bgColor='twitter.600'
+                        color='white'
+                        mr='4'
+                    >
+                        Registrar
+                    </Button>
 
-                <button
-                    type="submit"
-                    className="btn btn-primary btn-block mb-5"
-                >
-                    Register
-                </button>
+                    <Link
+                        to="/login"
+                        className="link"
+                    >
+                        <Text color='white'>Ya estas registrado?</Text>
+                    </Link>
+                </Flex>
 
-
-
-                <Link
-                    to="/auth/login"
-                    className="link"
-                >
-                    Already registered?
-                </Link>
 
             </Box>
         </Layaout>

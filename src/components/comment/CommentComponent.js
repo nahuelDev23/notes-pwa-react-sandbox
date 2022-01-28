@@ -4,7 +4,7 @@ import { CommentForm } from './CommentForm';
 import { CommentList } from './CommentList';
 import { onSnapshot, collection, query, where, orderBy } from "firebase/firestore";
 import { useSelector } from 'react-redux';
-import { Text } from '@chakra-ui/react';
+import { Box, Text } from '@chakra-ui/react';
 
 export const CommentComponent = ({ idReview }) => {
   const [comments, setComments] = useState([])
@@ -25,9 +25,9 @@ export const CommentComponent = ({ idReview }) => {
 
   
   return (
-    <div>
+    <Box mb='4'>
       {uid ? <CommentForm idReview={idReview} /> : <Text textAlign='center' mt='4'>Tenes que estar registrado para comentar</Text>}
        <CommentList comment={comments} />
-    </div>
+    </Box>
   )
 };
