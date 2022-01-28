@@ -21,13 +21,14 @@ import { PublicRoute } from './PublicRouter';
 import { PrivateRoute } from './PrivateRouter';
 import { Dashboard } from '../pages/Dashboard';
 import { useSelector } from 'react-redux';
-import {  CircularProgress, Flex } from '@chakra-ui/react';
+import {   Flex } from '@chakra-ui/react';
+import { AuthRoute } from './AuthRouter';
 
 export const AppRouter = () => {
     const dispatch = useDispatch()
     const { roles } = useSelector(state => state.auth)
     const [checking, setChecking] = useState(true)
-
+    const { uid } = useSelector(state => state.auth)
     useEffect(() => {
         const auth = getAuth();
         onAuthStateChanged(auth, async(user) => {
@@ -62,9 +63,9 @@ export const AppRouter = () => {
                     </PublicRoute>
                 }></Route>
                 <Route path="/login" element={
-                    <PublicRoute>
+                    <AuthRoute uid={uid}>
                         <Login />
-                    </PublicRoute>
+                    </AuthRoute>
                 }></Route>
                 <Route path="/dashboard" element={
                     <PrivateRoute isAdmin={roles?.admin}>
@@ -72,9 +73,9 @@ export const AppRouter = () => {
                     </PrivateRoute>
                 }></Route>
                 <Route path="/register" element={
-                    <PublicRoute >
+                    <AuthRoute uid={uid}>
                         <Register />
-                    </PublicRoute>
+                    </AuthRoute>
                 }></Route>
                
                 <Route path="/review/:id" element={

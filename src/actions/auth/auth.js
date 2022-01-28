@@ -16,6 +16,7 @@ export const startGoogleLogin = () => {
                 const roles = req.data().roles;
                 
                 dispatch(login(user.uid, user.displayName, user.email, user.photoURL,roles))
+                
             })
             .catch(e => {
                 Swal.fire('Error!',e.message,'error')
