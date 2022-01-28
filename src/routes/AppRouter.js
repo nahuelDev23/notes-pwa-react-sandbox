@@ -1,6 +1,7 @@
 import { onAuthStateChanged, getAuth } from '../firebase/firebaseConfig'
 import React, { useEffect, useState } from 'react'
 import {doc,getDoc,db } from '../firebase/firebaseConfig'
+import ClipLoader from "react-spinners/ClipLoader";
 
 import {
     Routes,
@@ -20,7 +21,7 @@ import { PublicRoute } from './PublicRouter';
 import { PrivateRoute } from './PrivateRouter';
 import { Dashboard } from '../pages/Dashboard';
 import { useSelector } from 'react-redux';
-import { Heading } from '@chakra-ui/react';
+import {  CircularProgress, Flex } from '@chakra-ui/react';
 
 export const AppRouter = () => {
     const dispatch = useDispatch()
@@ -47,7 +48,7 @@ export const AppRouter = () => {
 
     if( checking ) {
         return (
-            <Heading fontSize='xl' textColor='green.300'>Cargando</Heading>
+            <Flex minW='full' minH='100vh'  justifyContent='center' alignItems='center' fontSize='xl' textColor='white'><ClipLoader color='white'/></Flex>
         )
     }
 
