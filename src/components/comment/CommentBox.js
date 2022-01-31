@@ -1,4 +1,4 @@
-import { Avatar, Box, Flex, Image, Text } from '@chakra-ui/react';
+import { Avatar, Box, Flex, Text } from '@chakra-ui/react';
 import 'moment/locale/es'
 import React from 'react';
 import Moment from 'react-moment';

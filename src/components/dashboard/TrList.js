@@ -1,6 +1,5 @@
 import React from 'react';
-import { Button, IconButton, Menu, MenuButton, MenuList, Td, Tr } from '@chakra-ui/react';
-import { HamburgerIcon } from '@chakra-ui/icons'
+import { Button, Menu, MenuButton, MenuList, Td, Tr } from '@chakra-ui/react';
 export const TrList = ({ review, handleEdit, onOpen, setIdToDelete, setIsOpenDelete }) => {
 
     const { title, stars } = review.data()

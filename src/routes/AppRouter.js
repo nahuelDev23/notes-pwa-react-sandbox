@@ -2,13 +2,11 @@ import { onAuthStateChanged, getAuth } from '../firebase/firebaseConfig'
 import React, { useEffect, useState } from 'react'
 import {doc,getDoc,db } from '../firebase/firebaseConfig'
 import ClipLoader from "react-spinners/ClipLoader";
-
 import {
     Routes,
     Route,
     BrowserRouter,
 } from "react-router-dom";
-
 
 import { Home } from '../pages/Home';
 import { Login } from '../pages/Login';
