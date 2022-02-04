@@ -15,7 +15,7 @@ import {
 } from 'firebase/auth'
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDQz4Tpoc33gnfeXFYvWrFu7-T6IRhwBDk",
+  apiKey:process.env.REACT_APP_API_FIREBASE_KEY,
   authDomain: "notas-react-f1c65.firebaseapp.com",
   projectId: "notas-react-f1c65",
   storageBucket: "notas-react-f1c65.appspot.com",
